@@ -1,7 +1,7 @@
-# Tippy Typing for kids: typing.thornbyte.in
+# Tippy Typing for kids: tippytyping.thornbyte.in
 
 A free typing website for children aged 4 to 10. It's a plain static site (HTML/CSS/JS, no build step) hosted free on GitHub Pages.
-Your agency site stays at thornbyte.in. This one lives on the subdomain **typing.thornbyte.in**, so you don't need a new domain.
+Your agency site stays at thornbyte.in. This one lives on the subdomain **tippytyping.thornbyte.in**, so you don't need a new domain.
 
 ## What's inside
 | File | What it is |
@@ -10,6 +10,7 @@ Your agency site stays at thornbyte.in. This one lives on the subdomain **typing
 | learn.html | 19 lessons (F J → all letters → numbers) with finger guide |
 | balloon-pop.html | Letter game (ages 4–8) |
 | space-words.html | Word game (ages 6–10) |
+| keyboard-finger-chart.html | Printable colour-coded finger chart (SEO page for "typing finger chart printable") |
 | parents.html | Long guide for parents and teachers (SEO + AdSense approval) |
 | about.html, privacy.html, 404.html | Required pages |
 | assets/app.js | Shared engine: sounds, voice, keyboard, stars, stickers, **ads switch** |
@@ -24,16 +25,17 @@ In this folder run `python -m http.server 8000`, then open http://localhost:8000
 ## Go live (one time, about 20 minutes)
 1. **GitHub:** the repo is `beingvikasbhadu/tippy-typing` (public). Push changes to `main` and Pages republishes in about a minute.
 2. **Pages:** repo > Settings > Pages > Source: "Deploy from a branch", branch `main`, folder `/ (root)` > Save.
-   Then, under Custom domain, enter `typing.thornbyte.in` > Save. (The CNAME file already contains it.)
+   Then, under Custom domain, enter `tippytyping.thornbyte.in` > Save. (The CNAME file already contains it.)
 3. **GoDaddy DNS:** Domain Portfolio > thornbyte.in > DNS > Add new record:
-   `Type: CNAME   Name: typing   Value: beingvikasbhadu.github.io   TTL: 1 hour`
+   `Type: CNAME   Name: tippytyping   Value: beingvikasbhadu.github.io   TTL: 1 hour`
    Leave the agency site's existing records alone.
+   **Old address:** the site used to live at typing.thornbyte.in. Don't leave its `typing` CNAME pointing at GitHub (anyone could claim it with their own repo). Change it in GoDaddy > Forwarding > Add subdomain forwarding: `typing` → `https://tippytyping.thornbyte.in`, Permanent (301).
    Before the DNS record exists, the site is also reachable at https://beingvikasbhadu.github.io/tippy-typing/ (it redirects to the custom domain once DNS works).
 4. Wait 10–60 minutes, then go back to Settings > Pages and tick **Enforce HTTPS**.
 5. **Contact email:** the site shows `hello@thornbyte.in` on the About and Privacy pages. Create it for free with GoDaddy email forwarding (forward it to your Gmail), or replace it in about.html and privacy.html.
 
 ## Get found on Google
-- Google Search Console > Add property > Domain `thornbyte.in` (covers the subdomain), or URL prefix `https://typing.thornbyte.in/`. Then submit `https://typing.thornbyte.in/sitemap.xml`.
+- Google Search Console > Add property > Domain `thornbyte.in` (covers the subdomain), or URL prefix `https://tippytyping.thornbyte.in/`. Then submit `https://tippytyping.thornbyte.in/sitemap.xml`.
 - Add a link to the typing site on your agency site's footer. Post it in parent and teacher groups (Facebook, Reddit r/Parenting, r/Teachers, WhatsApp school groups) and on Pinterest.
 
 ## Turn on ads (Google AdSense)

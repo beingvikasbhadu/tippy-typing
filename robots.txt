@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://typing.thornbyte.in/sitemap.xml
+Sitemap: https://tippytyping.thornbyte.in/sitemap.xml
