@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Balloon Pop – Free Letter Typing Game for Kids | Tippy Typing</title>
+<meta name="description" content="Balloon Pop is a free letter typing game for kids aged 4 to 8. Press the key on each balloon to pop it: home row, top row, all letters or numbers.">
+<link rel="canonical" href="https://typing.thornbyte.in/balloon-pop.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#6c4ff6">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:site_name" content="Tippy Typing">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Balloon Pop – Typing Game for Kids">
+<meta property="og:description" content="Balloon Pop is a free letter typing game for kids aged 4 to 8. Press the key on each balloon to pop it: home row, top row, all letters or numbers.">
+<meta property="og:url" content="https://typing.thornbyte.in/balloon-pop.html">
+<meta property="og:image" content="https://typing.thornbyte.in/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tippy the fox with letter balloons: free typing games for kids">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Balloon Pop – Typing Game for Kids">
+<meta name="twitter:description" content="Balloon Pop is a free letter typing game for kids aged 4 to 8. Press the key on each balloon to pop it: home row, top row, all letters or numbers.">
+<meta name="twitter:image" content="https://typing.thornbyte.in/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=3">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "VideoGame", "name": "Balloon Pop", "url": "https://typing.thornbyte.in/balloon-pop.html", "image": "https://typing.thornbyte.in/assets/og-image.png", "description": "A free letter-recognition typing game for children aged 4 to 8: press the key on each balloon to pop it.", "genre": ["Educational", "Typing"], "gamePlatform": "Web browser", "applicationCategory": "Game", "operatingSystem": "Any", "inLanguage": "en", "isAccessibleForFree": true, "isFamilyFriendly": true, "audience": {"@type": "PeopleAudience", "suggestedMinAge": 4, "suggestedMaxAge": 8}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, "publisher": {"@type": "Organization", "@id": "https://thornbyte.in/#org", "name": "Thornbyte", "url": "https://thornbyte.in", "logo": {"@type": "ImageObject", "url": "https://typing.thornbyte.in/assets/icon-512.png", "width": 512, "height": 512}}, "isPartOf": {"@id": "https://typing.thornbyte.in/#website"}}
+</script>
+<script src="assets/app.js?v=3"></script>
+<script src="assets/art.js?v=3"></script>
+<script src="assets/fx.js?v=3"></script>
+<script src="assets/music.js?v=3"></script>
+<script type="application/ld+json" id="crumbs">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Tippy Typing", "item": "https://typing.thornbyte.in/"}, {"@type": "ListItem", "position": 2, "name": "Balloon Pop", "item": "https://typing.thornbyte.in/balloon-pop.html"}]}</script>
+</head>
+<body data-music="sky">
+<header class="site-header"><div class="wrap">
+  <a class="logo" href="./"><span class="mascot" data-fox="happy" aria-hidden="true"></span><span>Tippy Typing<small>for kids</small></span></a>
+  <nav class="nav" aria-label="Main"><a href="./">Home</a><a href="learn.html">Lessons</a><a href="balloon-pop.html" aria-current="page">Balloon Pop</a><a href="space-words.html">Space Words</a><a href="parents.html">Parents</a></nav>
+  <div class="toggles"><button class="toggle" data-setting="music" title="Music on or off" aria-label="Music">🎵</button><button class="toggle" data-setting="sound" title="Sound on or off" aria-label="Sound">🔊</button><button class="toggle" data-setting="voice" title="Voice hint: says the right key once after a mistake" aria-label="Voice">🗣️</button><button class="toggle" data-setting="caps" title="Show capital letters" aria-label="Capital letters">ABC</button></div>
+</div></header>
+
+<main class="game-wrap">
+  <div id="setup" class="game-setup">
+    <div class="setup-art" data-balloon="0" data-letter="A" aria-hidden="true"></div>
+    <h1>Balloon Pop</h1>
+    <p class="muted">Press the letter on a balloon to pop it before it floats away!</p>
+    <h2 style="font-size:1.2rem">Which letters?</h2>
+    <div class="choice-row" id="modes"></div>
+    <h2 style="font-size:1.2rem">How fast?</h2>
+    <div class="choice-row" id="speeds"></div>
+    <button class="btn big green" id="go">▶ Start!</button>
+    <p class="muted" style="margin-top:12px;font-size:.95rem">Tip: press <b>Esc</b> to pause.</p>
+  </div>
+
+  <div id="play" hidden>
+    <div class="hud">
+      <span class="pill" id="h-time">⏱ 60</span>
+      <span class="pill" id="h-pop">🎈 0</span>
+      <span class="pill" id="h-miss">💨 0</span>
+      <span class="pill" id="h-combo">🔥 0</span>
+      <button class="btn small alt" id="pause">⏸ Pause</button>
+    </div>
+    <div class="stage sky" id="stage"></div>
+    <div id="kb"></div>
+  </div>
+
+  <section class="prose narrow" style="margin:24px auto 0">
+    <h2>How to play Balloon Pop</h2>
+    <p>Balloons with letters float up from the bottom of the sky. Your child presses the matching key on the keyboard to pop each balloon. The balloon closest to the top glows, and so does its key on the on-screen keyboard. Each round lasts 60 seconds.</p>
+    <ul>
+      <li><b>Home row</b> (A S D F G H J K L) is the best place to start.</li>
+      <li><b>🐢 Slow</b> suits 4 and 5 year olds. The glowing key on the on-screen keyboard shows which key to press.</li>
+      <li>Pop at least 90% of the balloons to earn 3 ⭐ stars and fill up the sticker book.</li>
+      <li>On a tablet, tap the keys on the on-screen keyboard.</li>
+    </ul>
+    <p>Ready for words? Try <a href="space-words.html">Space Words</a>, or learn the right fingers in our <a href="learn.html">step-by-step typing lessons</a>.</p>
+    <h2>Questions parents ask</h2>
+    <h3>What age is Balloon Pop for?</h3>
+    <p>Balloon Pop suits children aged 4 to 8. Four and five year olds do best on 🐢 Slow with the home row, because the glowing key on the on-screen keyboard always shows which key to press. Confident 7 and 8 year olds can try 🚀 Fast with all letters.</p>
+    <h3>How does Balloon Pop help my child learn to type?</h3>
+    <p>Each balloon asks your child to find one letter on the keyboard, so they learn where every key is without reading. Popping the same letters again and again builds memory, and starting with the home row prepares their fingers for touch typing.</p>
+    <h3>Can my child play without a keyboard?</h3>
+    <p>Yes. On a tablet or phone, children tap the letters on the on-screen keyboard under the sky. A real keyboard is best for learning, but tapping still teaches letter recognition and where the keys sit.</p>
+
+  </section>
+</main>
+
+<footer class="site-footer"><div class="wrap">
+  <div class="links"><a href="./">Home</a><a href="learn.html">Typing lessons</a><a href="balloon-pop.html">Balloon Pop</a><a href="space-words.html">Space Words</a><a href="parents.html">For parents &amp; teachers</a><a href="about.html">About &amp; contact</a><a href="privacy.html">Privacy</a></div>
+  <p>© <span data-year>2026</span> Thornbyte. Free typing games for kids. No sign-up, no personal data. Made in India by <a href="https://thornbyte.in">Thornbyte</a>.</p>
+</div></footer>
+
+<script>
+(function () {
+  'use strict';
+  const MODES = {
+    home: { label: 'Home row', sub: 'A S D F G H J K L', keys: 'asdfghjkl' },
+    top: { label: 'Top row', sub: 'Q W E R T Y U I O P', keys: 'qwertyuiop' },
+    bottom: { label: 'Bottom row', sub: 'Z X C V B N M', keys: 'zxcvbnm' },
+    all: { label: 'All letters', sub: 'A to Z', keys: 'abcdefghijklmnopqrstuvwxyz' },
+    numbers: { label: 'Numbers', sub: '1 to 0', keys: '1234567890' }
+  };
+  const SPEEDS = {
+    slow: { label: '🐢 Slow', sub: 'Ages 4–5', every: 2300, rise: 10000 },
+    medium: { label: '🐇 Medium', sub: 'Ages 6–7', every: 1600, rise: 7500 },
+    fast: { label: '🚀 Fast', sub: 'Ages 8+', every: 1100, rise: 5500 }
+  };
+  const ROUND = 60000;
+
+  let mode = TK.store.get('bp_mode', 'home'), speed = TK.store.get('bp_speed', 'slow');
+  if (!MODES[mode]) mode = 'home';
+  if (!SPEEDS[speed]) speed = 'slow';
+
+  const $ = id => document.getElementById(id);
+  const stage = $('stage');
+
+  function renderChoices() {
+    const stars = TK.getStars();
+    $('modes').innerHTML = Object.entries(MODES).map(([k, m]) => {
+      const s = stars['balloons-' + k] || 0;
+      return `<button class="choice" data-mode="${k}" aria-pressed="${k === mode}">${m.label}<small>${m.sub}</small><span class="st">${'⭐'.repeat(s) || '&nbsp;'}</span></button>`;
+    }).join('');
+    $('speeds').innerHTML = Object.entries(SPEEDS).map(([k, s]) => `<button class="choice" data-speed="${k}" aria-pressed="${k === speed}">${s.label}<small>${s.sub}</small></button>`).join('');
+  }
+  $('modes').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) { mode = b.dataset.mode; TK.store.set('bp_mode', mode); renderChoices(); } });
+  $('speeds').addEventListener('click', e => { const b = e.target.closest('[data-speed]'); if (b) { speed = b.dataset.speed; TK.store.set('bp_speed', speed); renderChoices(); } });
+  renderChoices();
+
+  const kb = TK.keyboard($('kb'), { numbers: true, onKey: key });
+  let counting = false, balloons, popped, escaped, wrong, combo, bestCombo, elapsed, spawnIn, last, running = false, paused = false, target = null, W, H, fx = null;
+  TKArt.skyScene(stage);
+
+  $('go').addEventListener('click', start);
+  $('pause').addEventListener('click', togglePause);
+  document.addEventListener('visibilitychange', () => { if (document.hidden && running && !paused) togglePause(); });
+
+  function start() {
+    if (counting) return;
+    $('setup').hidden = true;
+    $('play').hidden = false;
+    document.activeElement && document.activeElement.blur();
+    stage.querySelectorAll('.balloon,.float-text,.overlay-msg').forEach(n => n.remove());
+    balloons = []; popped = 0; escaped = 0; wrong = 0; combo = 0; bestCombo = 0; elapsed = 0; spawnIn = 300; target = null; paused = false;
+    $('pause').textContent = '⏸ Pause';
+    measure();
+    if (!fx) fx = TKFX.create(stage); else fx.resize();
+    stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    hud();
+    counting = true;
+    TK.countdown(stage, () => {
+      counting = false;
+      running = true;
+      last = performance.now();
+      requestAnimationFrame(frame);
+    });
+  }
+  function measure() { W = stage.clientWidth; H = stage.clientHeight; }
+  window.addEventListener('resize', measure);
+
+  function spawn() {
+    const keys = [...MODES[mode].keys];
+    const onScreen = new Set(balloons.map(b => b.ch));
+    const free = keys.filter(k => !onScreen.has(k));
+    const ch = TK.pick(free.length ? free : keys);
+    const ci = Math.random() * TKArt.BALLOON_COLORS.length | 0;
+    const el = document.createElement('div');
+    el.className = 'balloon';
+    el.innerHTML = TKArt.balloon(ci, ch.toUpperCase());
+    stage.appendChild(el);
+    const sp = SPEEDS[speed];
+    balloons.push({ el, ch, ci, x: Math.random() * Math.max(10, W - 96) + 8, y: H + 10, v: (H + 150) / sp.rise, phase: Math.random() * 6 });
+  }
+
+  function frame(t) {
+    if (!running) return;
+    const dt = Math.min(50, t - last); last = t;
+    if (!paused) {
+      elapsed += dt;
+      spawnIn -= dt;
+      if (spawnIn <= 0 && elapsed < ROUND - 1500) { spawn(); spawnIn = SPEEDS[speed].every; }
+      for (const b of balloons.slice()) {
+        b.y -= b.v * dt;
+        const sway = Math.sin(elapsed / 700 + b.phase);
+        b.el.style.transform = `translate(${b.x + sway * 10}px, ${b.y}px) rotate(${sway * -5}deg)`;
+        if (b.y < -140) {
+          remove(b); escaped++; combo = 0;
+        }
+      }
+      pickTarget();
+      hud();
+      if (elapsed >= ROUND) return end();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function pickTarget() {
+    let top = null;
+    // Only balloons that have risen above the hills can be the target.
+    for (const b of balloons) if (b.y + 50 < H * .78 && (!top || b.y < top.y)) top = b;
+    if (top !== target) {
+      if (target) target.el.classList.remove('target');
+      target = top;
+      if (target) target.el.classList.add('target');
+      kb.highlight(target ? [target.ch] : []);
+    }
+  }
+
+  function remove(b) { balloons.splice(balloons.indexOf(b), 1); if (b === target) target = null; b.el.remove(); }
+
+  function key(k) {
+    if (k === 'Escape') { if (running) togglePause(); return; }
+    if (!running || paused || k.length !== 1) return;
+    const hits = balloons.filter(b => b.ch === k).sort((a, b) => a.y - b.y);
+    if (!hits.length) { wrong++; combo = 0; kb.flash(k, false); TK.sfx.wrong(); hud(); return; }
+    const b = hits[0];
+    kb.flash(k, true);
+    TK.sfx.pop();
+    popped++; combo++; bestCombo = Math.max(bestCombo, combo);
+    const cx = b.x + Math.sin(elapsed / 700 + b.phase) * 10 + 39, cy = b.y + 42;
+    fx.pop(cx, cy, TKArt.BALLOON_COLORS[b.ci]);
+    floatText(cx, cy - 30, combo >= 5 && combo % 5 === 0 ? `${combo} in a row!` : '+1');
+    fx.string(cx, cy + 46);
+    if (combo >= 5 && combo % 5 === 0) {
+      fx.sparkle(cx, cy, 14); TK.sfx.star();
+      // a rainbow for every 10 in a row
+      if (combo % 10 === 0) { stage.classList.remove('rainbow-on'); void stage.offsetWidth; stage.classList.add('rainbow-on'); }
+    }
+    balloons.splice(balloons.indexOf(b), 1);
+    if (b === target) target = null;
+    b.el.classList.remove('target');
+    b.el.classList.add('popped');
+    setTimeout(() => b.el.remove(), 300);
+    hud();
+  }
+
+  function floatText(x, y, text) {
+    const n = document.createElement('div');
+    n.className = 'float-text';
+    n.textContent = text;
+    n.style.left = x + 'px'; n.style.top = y + 'px';
+    stage.appendChild(n);
+    setTimeout(() => n.remove(), 800);
+  }
+
+  function hud() {
+    $('h-time').textContent = '⏱ ' + Math.max(0, Math.ceil((ROUND - elapsed) / 1000));
+    $('h-pop').textContent = '🎈 ' + popped;
+    $('h-miss').textContent = '💨 ' + escaped;
+    $('h-combo').textContent = '🔥 ' + combo;
+  }
+
+  function togglePause() {
+    if (!running) return;
+    paused = !paused;
+    $('pause').textContent = paused ? '▶ Go!' : '⏸ Pause';
+    const old = stage.querySelector('.overlay-msg'); if (old) old.remove();
+    if (paused) { const o = document.createElement('div'); o.className = 'overlay-msg'; o.innerHTML = '⏸ Paused<br><small>Press Esc or ▶ Go! to keep playing</small>'; stage.appendChild(o); }
+    else last = performance.now();
+  }
+
+  function end() {
+    running = false;
+    balloons.slice().forEach(remove);
+    kb.highlight([]);
+    const ratio = popped / Math.max(1, popped + escaped);
+    const stars = popped >= 12 && ratio >= .9 ? 3 : popped >= 8 && ratio >= .7 ? 2 : popped >= 4 ? 1 : 0;
+    const sticker = TK.saveStars('balloons-' + mode, stars);
+    const bestKey = `bp_best_${mode}_${speed}`, best = TK.store.get(bestKey, 0);
+    const newBest = popped > best;
+    if (newBest) TK.store.set(bestKey, popped);
+    const msg = stars === 3 ? 'Wow! You popped almost every balloon!' : stars === 2 ? 'Great popping!' : stars === 1 ? 'Nice try! Play again to get more stars.' : "Let's try the slow speed!";
+    TK.showResult({
+      title: newBest && popped > 0 ? '🏅 New best score!' : '🎈 Time is up!',
+      stars, message: msg, sticker, say: msg,
+      stats: [`🎈 ${popped} popped`, `💨 ${escaped} floated away`, `🔥 Best combo ${bestCombo}`, `🏅 Best ${Math.max(best, popped)}`],
+      actions: [
+        { label: '↻ Play again', onClick: start, cls: 'green' },
+        { label: 'Change letters', onClick: () => { $('play').hidden = true; $('setup').hidden = false; renderChoices(); } },
+        { label: '🚀 Space Words', href: 'space-words.html' }
+      ]
+    });
+  }
+
+  TK.onType(key);
+})();
+</script>
+</body>
+</html>

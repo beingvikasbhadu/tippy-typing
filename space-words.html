@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space Words – Free Word Typing Game for Kids | Tippy Typing</title>
+<meta name="description" content="Space Words is a free word typing game for kids aged 6 to 10. Type words and sight words to blast space rocks before they reach your rocket.">
+<link rel="canonical" href="https://typing.thornbyte.in/space-words.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#6c4ff6">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:site_name" content="Tippy Typing">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Space Words – Typing Game for Kids">
+<meta property="og:description" content="Space Words is a free word typing game for kids aged 6 to 10. Type words and sight words to blast space rocks before they reach your rocket.">
+<meta property="og:url" content="https://typing.thornbyte.in/space-words.html">
+<meta property="og:image" content="https://typing.thornbyte.in/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tippy the fox with letter balloons: free typing games for kids">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Space Words – Typing Game for Kids">
+<meta name="twitter:description" content="Space Words is a free word typing game for kids aged 6 to 10. Type words and sight words to blast space rocks before they reach your rocket.">
+<meta name="twitter:image" content="https://typing.thornbyte.in/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=3">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "VideoGame", "name": "Space Words", "url": "https://typing.thornbyte.in/space-words.html", "image": "https://typing.thornbyte.in/assets/og-image.png", "description": "A free word and sight-word typing game for children aged 6 to 10: type words to blast space rocks.", "genre": ["Educational", "Typing"], "gamePlatform": "Web browser", "applicationCategory": "Game", "operatingSystem": "Any", "inLanguage": "en", "isAccessibleForFree": true, "isFamilyFriendly": true, "audience": {"@type": "PeopleAudience", "suggestedMinAge": 6, "suggestedMaxAge": 10}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, "publisher": {"@type": "Organization", "@id": "https://thornbyte.in/#org", "name": "Thornbyte", "url": "https://thornbyte.in", "logo": {"@type": "ImageObject", "url": "https://typing.thornbyte.in/assets/icon-512.png", "width": 512, "height": 512}}, "isPartOf": {"@id": "https://typing.thornbyte.in/#website"}}
+</script>
+<script src="assets/app.js?v=3"></script>
+<script src="assets/art.js?v=3"></script>
+<script src="assets/fx.js?v=3"></script>
+<script src="assets/music.js?v=3"></script>
+<script src="assets/data.js?v=3"></script>
+<script type="application/ld+json" id="crumbs">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Tippy Typing", "item": "https://typing.thornbyte.in/"}, {"@type": "ListItem", "position": 2, "name": "Space Words", "item": "https://typing.thornbyte.in/space-words.html"}]}</script>
+</head>
+<body data-music="space">
+<header class="site-header"><div class="wrap">
+  <a class="logo" href="./"><span class="mascot" data-fox="happy" aria-hidden="true"></span><span>Tippy Typing<small>for kids</small></span></a>
+  <nav class="nav" aria-label="Main"><a href="./">Home</a><a href="learn.html">Lessons</a><a href="balloon-pop.html">Balloon Pop</a><a href="space-words.html" aria-current="page">Space Words</a><a href="parents.html">Parents</a></nav>
+  <div class="toggles"><button class="toggle" data-setting="music" title="Music on or off" aria-label="Music">🎵</button><button class="toggle" data-setting="sound" title="Sound on or off" aria-label="Sound">🔊</button><button class="toggle" data-setting="voice" title="Voice hint: says the right key once after a mistake" aria-label="Voice">🗣️</button><button class="toggle" data-setting="caps" title="Show capital letters" aria-label="Capital letters">ABC</button></div>
+</div></header>
+
+<main class="game-wrap">
+  <div id="setup" class="game-setup">
+    <div class="setup-art" data-art="rocket" aria-hidden="true" style="width:70px"></div>
+    <h1>Space Words</h1>
+    <p class="muted">Space rocks are falling! Type the word on a rock to blast it. Blast <b id="goal-n"></b> rocks to win.</p>
+    <h2 style="font-size:1.2rem">Which words?</h2>
+    <div class="choice-row" id="levels"></div>
+    <h2 style="font-size:1.2rem">How fast?</h2>
+    <div class="choice-row" id="speeds"></div>
+    <button class="btn big green" id="go">▶ Blast off!</button>
+    <p class="muted" style="margin-top:12px;font-size:.95rem">Tips: press <b>Esc</b> to pause, and <b>Backspace</b> to switch to another rock.</p>
+  </div>
+
+  <div id="play" hidden>
+    <div class="hud">
+      <span class="pill" id="h-shield">❤️❤️❤️</span>
+      <span class="pill" id="h-done">☄️ 0 / 15</span>
+      <span class="pill" id="h-score">⭐ 0</span>
+      <button class="btn small alt" id="pause">⏸ Pause</button>
+    </div>
+    <div class="stage space" id="stage"><div class="ship" id="ship" aria-hidden="true"></div></div>
+    <div id="kb"></div>
+  </div>
+
+  <section class="prose narrow" style="margin:24px auto 0">
+    <h2>How to play Space Words</h2>
+    <p>Words written on space rocks fall towards your rocket. Start typing a word and the rock lights up purple; finish the word to blast it with your laser. If a rock reaches the bottom, you lose a ❤️. Blast all the rocks to win. Keep all 3 hearts for 3 ⭐ stars.</p>
+    <ul>
+      <li><b>3-letter words</b> such as cat, sun and dog suit beginning readers (ages 6–7).</li>
+      <li><b>Sight words</b> are the most common words in children's books (the, said, look, come). Typing them helps with reading as well. Children can read each word aloud as they type it.</li>
+      <li><b>Big words</b> such as rainbow and dinosaur are a challenge for confident typists aged 8–10.</li>
+    </ul>
+    <p>Still learning where the letters are? Start with <a href="balloon-pop.html">Balloon Pop</a> or the <a href="learn.html">typing lessons</a>.</p>
+    <h2>Questions parents ask</h2>
+    <h3>What age is Space Words for?</h3>
+    <p>Space Words suits children aged 6 to 10 who know their letters and are starting to read. Beginners can pick 3-letter words on 🐢 Slow, while strong readers can blast big words like rainbow and dinosaur on 🚀 Fast.</p>
+    <h3>Does typing words help with reading and spelling?</h3>
+    <p>Yes. To type a word, your child has to look at every letter in order, which supports spelling. The sight words level uses the words that appear most often in early reading books, so practising them helps with reading as well.</p>
+    <h3>What happens if my child makes a mistake?</h3>
+    <p>Nothing bad. A wrong key gives a soft sound and the rock keeps falling, so your child simply presses the right key. If they started the wrong rock, Backspace lets them switch. Rocks only cost a ❤️ if they reach the rocket.</p>
+
+  </section>
+</main>
+
+<footer class="site-footer"><div class="wrap">
+  <div class="links"><a href="./">Home</a><a href="learn.html">Typing lessons</a><a href="balloon-pop.html">Balloon Pop</a><a href="space-words.html">Space Words</a><a href="parents.html">For parents &amp; teachers</a><a href="about.html">About &amp; contact</a><a href="privacy.html">Privacy</a></div>
+  <p>© <span data-year>2026</span> Thornbyte. Free typing games for kids. No sign-up, no personal data. Made in India by <a href="https://thornbyte.in">Thornbyte</a>.</p>
+</div></footer>
+
+<script>
+(function () {
+  'use strict';
+  const W_ = TK_DATA.WORDS;
+  const LEVELS = {
+    short: { label: '3-letter words', sub: 'cat, sun, dog', words: W_.short.filter(w => w.length === 3) },
+    sight: { label: 'Sight words', sub: 'the, said, look', words: W_.sight },
+    medium: { label: '4-letter words', sub: 'frog, cake, star', words: W_.medium },
+    long: { label: 'Big words', sub: 'rocket, rainbow', words: W_.long }
+  };
+  const SPEEDS = {
+    slow: { label: '🐢 Slow', sub: 'Just starting', fall: 16000, every: 3800, max: 3 },
+    medium: { label: '🐇 Medium', sub: 'Getting good', fall: 12000, every: 2800, max: 4 },
+    fast: { label: '🚀 Fast', sub: 'Typing pro', fall: 8500, every: 2000, max: 5 }
+  };
+  const GOAL = 15;
+  const $ = id => document.getElementById(id);
+  const stage = $('stage');
+  $('goal-n').textContent = GOAL;
+
+  let level = TK.store.get('sw_level', 'short'), speed = TK.store.get('sw_speed', 'slow');
+  if (!LEVELS[level]) level = 'short';
+  if (!SPEEDS[speed]) speed = 'slow';
+
+  function renderChoices() {
+    const stars = TK.getStars();
+    $('levels').innerHTML = Object.entries(LEVELS).map(([k, l]) => {
+      const s = stars['space-' + k] || 0;
+      return `<button class="choice" data-level="${k}" aria-pressed="${k === level}">${l.label}<small>${l.sub}</small><span class="st">${'⭐'.repeat(s) || '&nbsp;'}</span></button>`;
+    }).join('');
+    $('speeds').innerHTML = Object.entries(SPEEDS).map(([k, s]) => `<button class="choice" data-speed="${k}" aria-pressed="${k === speed}">${s.label}<small>${s.sub}</small></button>`).join('');
+  }
+  $('levels').addEventListener('click', e => { const b = e.target.closest('[data-level]'); if (b) { level = b.dataset.level; TK.store.set('sw_level', level); renderChoices(); } });
+  $('speeds').addEventListener('click', e => { const b = e.target.closest('[data-speed]'); if (b) { speed = b.dataset.speed; TK.store.set('sw_speed', speed); renderChoices(); } });
+  renderChoices();
+
+  const kb = TK.keyboard($('kb'), { numbers: false, onKey: key });
+  let rocks, target, shields, cleared, score, wrong, typedOk, spawnIn, last, running = false, paused = false, W, H, bag = [], fx = null, sky = null, seed = 1, counting = false;
+  const ship = $('ship');
+  ship.innerHTML = TKArt.rocket();
+  TKArt.spaceScene(stage);
+
+  $('go').addEventListener('click', start);
+  $('pause').addEventListener('click', togglePause);
+  document.addEventListener('visibilitychange', () => { if (document.hidden && running && !paused) togglePause(); });
+  document.addEventListener('tk-settings', e => { if (e.detail === 'caps' && rocks) rocks.forEach(paint); });
+  window.addEventListener('resize', measure);
+  function measure() { W = stage.clientWidth; H = stage.clientHeight; }
+
+  function start() {
+    if (counting) return;
+    $('setup').hidden = true;
+    $('play').hidden = false;
+    document.activeElement && document.activeElement.blur();
+    stage.querySelectorAll('.meteor,.laser,.burst,.overlay-msg').forEach(n => n.remove());
+    rocks = []; target = null; shields = 3; cleared = 0; score = 0; wrong = 0; typedOk = 0; spawnIn = 500; paused = false; bag = [];
+    $('pause').textContent = '⏸ Pause';
+    measure();
+    if (!fx) { sky = TKFX.starfield(stage); fx = TKFX.create(stage); } else { sky.resize(); fx.resize(); }
+    sky.setSpeed(2.5);
+    ship.classList.remove('launch');
+    ship.style.transform = '';
+    stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    hud();
+    counting = true;
+    TK.countdown(stage, () => {
+      counting = false;
+      running = true;
+      last = performance.now();
+      requestAnimationFrame(frame);
+    });
+  }
+
+  // Next word: shuffled bag so words don't repeat soon; avoid first letters already on screen.
+  function nextWord() {
+    const firsts = new Set(rocks.map(r => r.word[0]));
+    for (let tries = 0; tries < 30; tries++) {
+      if (!bag.length) bag = TK.shuffle(LEVELS[level].words);
+      const w = bag.pop();
+      if (!firsts.has(w[0]) || tries > 25) return w;
+      bag.unshift(w);
+    }
+    return TK.pick(LEVELS[level].words);
+  }
+
+  function paint(r) {
+    r.wordEl.innerHTML = [...r.word].map((c, i) => `<span class="${i < r.typed ? 'ok' : ''}">${TK.show(c)}</span>`).join('');
+  }
+
+  function spawn() {
+    const word = nextWord();
+    const el = document.createElement('div');
+    el.className = 'meteor';
+    el.innerHTML = `<div class="trail"></div><div class="rock" style="animation-duration:${5 + Math.random() * 6}s;animation-direction:${Math.random() < .5 ? 'normal' : 'reverse'}">${TKArt.asteroid(seed++)}</div><div class="word"></div>`;
+    stage.appendChild(el);
+    const r = { el, wordEl: el.querySelector('.word'), word, typed: 0, y: -90, x: 0 };
+    paint(r);
+    // Keep the whole word on screen, even when it is wider than the rock.
+    const half = Math.max(46, r.wordEl.offsetWidth / 2);
+    r.x = half - 46 + 8 + Math.random() * Math.max(10, W - half * 2 - 16);
+    r.v = (H + 60) / SPEEDS[speed].fall;
+    rocks.push(r);
+  }
+
+  function frame(t) {
+    if (!running) return;
+    const dt = Math.min(50, t - last); last = t;
+    if (!paused) {
+      spawnIn -= dt;
+      const left = GOAL - cleared - rocks.length;
+      if (spawnIn <= 0 && rocks.length < SPEEDS[speed].max && left > 0) { spawn(); spawnIn = SPEEDS[speed].every; }
+      if (!rocks.length && left > 0) spawnIn = Math.min(spawnIn, 300);
+      for (const r of rocks.slice()) {
+        r.y += r.v * dt;
+        r.el.style.transform = `translate(${r.x}px, ${r.y}px)`;
+        if (r.y > H - 125) crash(r);
+        if (!running) return;
+      }
+      hint();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function hint() {
+    if (target) return kb.highlight([target.word[target.typed]]);
+    let low = null;
+    for (const r of rocks) if (!low || r.y > low.y) low = r;
+    kb.highlight(low ? [low.word[0]] : []);
+  }
+
+  function removeRock(r) { rocks.splice(rocks.indexOf(r), 1); if (r === target) target = null; }
+
+  function crash(r) {
+    removeRock(r);
+    r.el.classList.add('boom');
+    setTimeout(() => r.el.remove(), 300);
+    fx.explode(r.x + 46, r.y + 56);
+    shields--;
+    TK.sfx.boom();
+    TK.sfx.hurt();
+    stage.classList.remove('hurt', 'shake'); void stage.offsetWidth; stage.classList.add('hurt', 'shake');
+    hud();
+    if (shields <= 0) end(false);
+  }
+
+  function key(k) {
+    if (k === 'Escape') { if (running) togglePause(); return; }
+    if (!running || paused) return;
+    if (k === 'Backspace') { if (target) { target.typed = 0; target.el.classList.remove('target'); paint(target); target = null; } return; }
+    if (k.length !== 1) return;
+    if (!target) {
+      const c = rocks.filter(r => r.word[0] === k).sort((a, b) => b.y - a.y);
+      if (!c.length) return miss(k);
+      target = c[0];
+      target.el.classList.add('target');
+    } else if (target.word[target.typed] !== k) {
+      return miss(k);
+    }
+    target.typed++;
+    typedOk++;
+    kb.flash(k, true);
+    TK.sfx.tick();
+    paint(target);
+    if (target.typed >= target.word.length) return blast(target), hint();
+    // a little chip flies off the rock
+    const r = target;
+    fx.chips(r.x + 46, r.y + 46);
+    r.el.classList.add('hit');
+    setTimeout(() => r.el.classList.remove('hit'), 90);
+    hint();
+  }
+
+  function miss(k) { wrong++; kb.flash(k, false); TK.sfx.wrong(); }
+
+  function blast(r) {
+    removeRock(r);
+    const tx = r.x + 46, ty = r.y + 46, angle = Math.atan2(tx - W / 2, (H - 40) - ty);
+    // Turn the rocket towards the rock and fire from its nose.
+    ship.style.transform = `rotate(${angle}rad)`;
+    setTimeout(() => { if (!target) ship.style.transform = ''; }, 350);
+    const sx = W / 2 + Math.sin(angle) * 80, sy = H - 40 - Math.cos(angle) * 80;
+    const laser = document.createElement('div');
+    laser.className = 'laser';
+    laser.style.left = sx + 'px'; laser.style.top = sy + 'px';
+    laser.style.width = Math.hypot(tx - sx, ty - sy) + 'px';
+    laser.style.transform = `rotate(${Math.atan2(ty - sy, tx - sx)}rad)`;
+    stage.appendChild(laser);
+    setTimeout(() => laser.remove(), 260);
+    TK.sfx.zap();
+    setTimeout(TK.sfx.boom, 80);
+    r.el.classList.add('boom');
+    setTimeout(() => r.el.remove(), 300);
+    setTimeout(() => fx.explode(tx, ty), 60);
+    cleared++;
+    score += r.word.length * 10;
+    hud();
+    if (cleared >= GOAL) setTimeout(() => end(true), 400);
+  }
+
+  function hud() {
+    $('h-shield').textContent = '❤️'.repeat(Math.max(0, shields)) + '🤍'.repeat(3 - Math.max(0, shields));
+    $('h-done').textContent = `☄️ ${cleared} / ${GOAL}`;
+    $('h-score').textContent = '⭐ ' + score;
+  }
+
+  function togglePause() {
+    if (!running) return;
+    paused = !paused;
+    $('pause').textContent = paused ? '▶ Go!' : '⏸ Pause';
+    const old = stage.querySelector('.overlay-msg'); if (old) old.remove();
+    if (paused) { const o = document.createElement('div'); o.className = 'overlay-msg'; o.innerHTML = '⏸ Paused<br><small>Press Esc or ▶ Go! to keep playing</small>'; stage.appendChild(o); }
+    else last = performance.now();
+  }
+
+  function end(won) {
+    if (!running) return;
+    running = false;
+    rocks.slice().forEach(r => { removeRock(r); r.el.remove(); });
+    kb.highlight([]);
+    if (won) {
+      // the rocket zooms off into space before the result appears
+      ship.style.transform = '';
+      ship.style.setProperty('--lift', (H + 220) + 'px');
+      ship.classList.add('launch');
+      sky.setSpeed(8);
+      const t0 = performance.now();
+      (function trail() {
+        const k = (performance.now() - t0) / 1300;
+        if (k > 1) return;
+        const b = ship.getBoundingClientRect(), s = stage.getBoundingClientRect();
+        fx.exhaust(b.left - s.left + b.width / 2, b.bottom - s.top - 6);
+        requestAnimationFrame(trail);
+      })();
+      setTimeout(() => { sky.setSpeed(1); results(won); }, 1400);
+    } else {
+      sky.setSpeed(1);
+      results(won);
+    }
+  }
+
+  function results(won) {
+    const stars = won ? shields : 0;
+    const sticker = TK.saveStars('space-' + level, stars);
+    const acc = Math.round(typedOk / Math.max(1, typedOk + wrong) * 100);
+    const msg = won ? (stars === 3 ? 'Perfect mission! Not a scratch on your rocket!' : 'Mission complete! Great typing!') : 'Oh no, the rocks got through! Try the slow speed.';
+    TK.showResult({
+      title: won ? '🚀 Mission complete!' : '☄️ So close!',
+      stars, message: msg, sticker, say: msg,
+      stats: [`☄️ ${cleared} blasted`, `🎯 ${acc}% correct`, `⭐ ${score} points`],
+      actions: [
+        { label: '↻ Play again', onClick: start, cls: 'green' },
+        { label: 'Change words', onClick: () => { $('play').hidden = true; $('setup').hidden = false; renderChoices(); } },
+        { label: '📚 Lessons', href: 'learn.html' }
+      ]
+    });
+  }
+
+  TK.onType(key);
+})();
+</script>
+</body>
+</html>
